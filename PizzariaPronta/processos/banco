@@ -1,0 +1,127 @@
+DROP DATABASE IF EXISTS pizzaria;
+CREATE DATABASE pizzaria;
+USE pizzaria;
+
+CREATE TABLE usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(120) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    telefone VARCHAR(20),
+    senha VARCHAR(100),
+    foto VARCHAR(100) DEFAULT 'user.png'
+);
+
+CREATE TABLE pizza (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao VARCHAR(255),
+    imagem varchar(100)
+);
+
+CREATE TABLE tamanho_pizza (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(20) NOT NULL
+);
+
+INSERT INTO tamanho_pizza (nome) VALUES
+('pequena'), ('media'), ('grande');
+
+CREATE TABLE pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    data_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    endereco varchar(200),
+    status ENUM('Pendente','Em preparo','Saiu Para entrega','Concluido','Cancelado') DEFAULT 'pendente',
+    total DECIMAL(10,2) DEFAULT 0
+
+
+
+);
+
+CREATE TABLE item_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT NOT NULL,
+    pizza_id INT NOT NULL,
+    tamanho_id int not null,
+    quantidade INT NOT NULL
+);
+
+CREATE TABLE pizza_preco (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pizza_id INT NOT NULL,
+    tamanho_id INT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL
+);
+
+alter table pizza_preco 
+add CONSTRAINT fk_preco_pizza
+FOREIGN KEY (pizza_id) REFERENCES pizza(id);
+
+alter table pizza_preco 
+add CONSTRAINT fk_preco_tamanho
+FOREIGN KEY (tamanho_id) REFERENCES tamanho_pizza(id);
+
+ALTER TABLE pedido
+ADD CONSTRAINT fk_pedido_cliente
+FOREIGN KEY (cliente_id) REFERENCES cliente(id);
+
+
+ALTER TABLE item_pedido
+ADD CONSTRAINT fk_item_pedido
+FOREIGN KEY (pedido_id) REFERENCES pedido(id);
+
+ALTER TABLE item_pedido
+ADD CONSTRAINT fk_item_pizza
+FOREIGN KEY (pizza_id) REFERENCES pizza(id);
+
+
+
+INSERT INTO pizza (nome, descricao) VALUES
+('Calabresa', 'Calabresa fatiada com cebola e orégano'),
+('Dois Amores', 'Mussarela derretida combinada com chocolate ao leite'),
+('Frango com Catupiry', 'Frango desfiado com catupiry original'),
+('Portuguesa', 'Presunto, ovos, cebola, ervilha e pimentão'),
+('4 Queijos', 'Mussarela, provolone, parmesão e gorgonzola'),
+('Marguerita', 'Tomate, manjericão fresco e mussarela'),
+('Chocolate', 'Pizza doce de chocolate'),
+('Prestígio', 'Chocolate com coco ralado'),
+('Banana com Canela', 'Banana fatiada com açúcar e canela');
+
+-- Calabresa (ID 1)
+INSERT INTO pizza_preco (pizza_id, tamanho_id, preco) VALUES
+(1, 1, 40), (1, 2, 45), (1, 3, 50),
+
+(2, 1, 38), (2, 2, 43), (2, 3, 48), 
+
+(3, 1, 48), (3, 2, 53), (3, 3, 58),
+
+(4, 1, 50), (4, 2, 55), (4, 3, 60),
+
+(5, 1, 55), (5, 2, 60), (5, 3, 65),
+
+(6, 1, 42), (6, 2, 47), (6, 3, 52), 
+
+(7, 1, 35), (7, 2, 40), (7, 3, 45),
+
+(8, 1, 37), (8, 2, 42), (8, 3, 47),
+
+(9, 1, 30), (9, 2, 35), (9, 3, 40);
+
+UPDATE pizza SET imagem = '4Queijos.jpg'         WHERE nome = '4 Queijos';
+UPDATE pizza SET imagem = 'FrangoCatupiry.png'   WHERE nome = 'Frango com Catupiry';
+UPDATE pizza SET imagem = 'portuguesa.png'       WHERE nome = 'Portuguesa';
+UPDATE pizza SET imagem = 'calabresa.png'        WHERE nome = 'Calabresa';
+UPDATE pizza SET imagem = 'marguerita.jpg'       WHERE nome = 'Marguerita';
+UPDATE pizza SET imagem = 'chocolate.png'        WHERE nome = 'Chocolate';
+UPDATE pizza SET imagem = 'prestigio.png'        WHERE nome = 'Prestígio';
+UPDATE pizza SET imagem = '2Amores.png'          WHERE nome = 'Dois Amores';
+UPDATE pizza SET imagem = 'bananaCanela.png'     WHERE nome = 'Banana com Canela';
+
+

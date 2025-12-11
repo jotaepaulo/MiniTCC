@@ -1,0 +1,245 @@
+body {
+ background: 
+      linear-gradient(rgba(0, 0, 0, 0.645), rgb(0, 0, 0)), /* camada escura */
+      url('../img/fundoEdit.webp');
+  background-size: cover;     /* cobre toda a tela */
+  background-position: center;/* centraliza */
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+form {
+  width: 600px;
+  margin-top: 27px;
+  height: 600px;
+  padding: 10px 68px 40px;
+  background-color: rgba(3, 1, 1, 0.83); /* fundo escuro translúcido */
+  backdrop-filter: blur(3px);
+  border: 10px solid rgba(26, 3, 3, 0.847);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+/* === Inputs cinza para todo o formulário === */
+form input,
+form select,
+form textarea {
+    background-color: #3a3a3a !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+}
+
+/* Cor do placeholder */
+form input::placeholder {
+    color: #ccc !important;
+}
+
+/* Remover fundo amarelo automático do Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: #3a3a3a !important;
+}
+
+
+
+
+.btn-warning {
+  background-color: rgb(255, 255, 255) !important;
+  color: #000000 !important;
+  border: none !important;
+  width: 40px !important;
+}
+.btn-warning:hover {
+  background-color: #e60000 !important;
+   width: 600px;
+  margin: 80px auto;
+}
+
+form input {
+  background-color: #333333 !important;  /* muda o fundo do input */
+  color: #ffffff !important;             /* muda a cor do texto digitado */
+}
+.login-form input::placeholder {
+  color: #e0e0e0 !important; /* mude aqui a cor do texto do placeholder */
+  opacity: 1 !important;  /* garante que a cor fique visível no Chrome */
+}
+
+.btn-cadastrar {
+    display: inline-block;
+    padding: 10px 2px;
+    text-align: center;
+    width: 30%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    color: white;
+
+    transition: .3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-cadastrar:hover {
+    background: linear-gradient(135deg, #ff1a1a, #990000);
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+}
+
+.btn-cadastrar:active {
+    transform: scale(0.97);
+}
+
+.btn-voltar {
+    display: inline-block;
+    padding: 10px 2px;
+    text-align: center;
+    width: 30%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(135deg, #ffed4d, #ccbe00);
+    color: white;
+
+    transition: .3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-voltar:hover {
+    background: linear-gradient(135deg, #ffdd1a, #998a00);
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(255, 251, 0, 0.6);
+}
+
+.btn-voltar:active {
+    transform: scale(0.97);
+}
+.logo-container {
+    display: flex;
+    justify-content: center;   /* centraliza horizontal */
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 120px; /* tamanho */
+    height: auto;
+}
+
+
+
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to right, rgb(75, 2, 2), rgb(119, 23, 23), #4a0303);
+  backdrop-filter: blur(6px);
+  z-index: 1030;
+}
+
+.logo {
+  height: 130px !important;
+  width: auto !important;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  z-index: 9999;
+}
+
+
+.btn-pedidos {
+  padding: 10px 20px;
+  background-color: #60050d;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-left: 89%;
+}
+
+.btn-pedidos:hover {
+  background-color: #c71d2a;
+}
+
+
+/* ÍCONE USUÁRIO/DROPDOWN */
+.nav-item .user {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.nav-item .user:hover {
+  transform: scale(1.1);
+  opacity: 0.85;
+}
+
+.nav-item .dropdown-menu {
+  background: #4a0303 !important;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 8px 0;
+  min-width: 160px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 15px rgb(63, 1, 1);
+  animation: fadeInDropdown .15s ease;
+}
+
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-menu .dropdown-item {
+  color: #fff !important;
+  padding: 10px 18px;
+  font-size: 15px;
+  transition: 0.25s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: #b81d13 !important;
+  color: #fff !important;
+  padding-left: 22px;
+}
+
+.dropdown-divider {
+  border-color: #444;
+}
+
+.nav-link.dropdown-toggle::after {
+  display: none !important;
+}
+
