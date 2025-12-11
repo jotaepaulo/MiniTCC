@@ -1,0 +1,492 @@
+/* BODY */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 20vh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.722), rgba(0, 0, 0, 0.755)),
+    url('../img/fundo.avif');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: block;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to right, rgb(75, 2, 2), rgb(119, 23, 23), #4a0303);
+  backdrop-filter: blur(6px);
+  z-index: 1030;
+}
+
+.fancy-white {
+  font-family: "Poppins", "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.3rem;       /* ajuste conforme necessário */
+  letter-spacing: 0.6px;
+  line-height: 1.1;
+  text-transform: none;
+  list-style: none;  
+  text-shadow: 0 1px 0 rgba(255,255,255,0.03), 0 6px 18px rgba(0,0,0,0.35);
+}
+
+
+/* BOTÃO PEDIDOS */
+.btn-pedidos {
+  padding: 10px 20px;
+  background-color: #60050d;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-left: 82%;
+}
+
+.btn-pedidos:hover {
+  background-color: #c71d2a;
+}
+
+
+.nav-item .user {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.nav-item .user:hover {
+  transform: scale(1.1);
+  opacity: 0.85;
+}
+
+.nav-item .dropdown-menu {
+  background: #4a0303 !important;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 8px 0;
+  min-width: 160px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 15px rgb(63, 1, 1);
+  animation: fadeInDropdown .15s ease;
+}
+
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-menu .dropdown-item {
+  color: #fff !important;
+  padding: 10px 18px;
+  font-size: 15px;
+  transition: 0.25s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: #b81d13 !important;
+  color: #fff !important;
+  padding-left: 22px;
+}
+
+
+.nav-link.dropdown-toggle::after {
+  display: none !important;
+}
+
+/* LOGO E BOTÃO BANNER */
+.logo {
+  height: 130px !important;
+  width: auto !important;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  z-index: 9999;
+}
+
+
+
+.secao-banner { position: relative; }
+
+.botao-pizzaria:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 0 25px rgba(255, 120, 0, 1);
+  filter: brightness(1.1);
+}
+
+.botao-pizzaria:active {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+
+.botoes-especificos {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.botao-pizzaria-especifico {
+  background: linear-gradient(45deg, #b81d13, #ad3f04, #d79703);
+  color: #fff;
+  padding: 14px 35px;
+  border: none;
+  border-radius: 50px;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 95, 0, 0.7);
+  transition: 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  flex: 1;
+  margin: 0 20px;
+  text-align: center;
+}
+
+/* CARROSSEL SLIDES */
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active { opacity: 1; }
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+}
+
+
+.pedido-item {
+  width: 100%;
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+.pedido-item:hover { transform: scale(1.02); }
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 420px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal-close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn-salvar {
+  width: 100%;
+  padding: 12px;
+  background: #198c19;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pedidos {
+  width: 100%;
+  max-width: 1200px;
+  margin: 120px auto 40px;
+  padding: 0 40px;
+  background: #fff8f0;
+  border-radius: 14px;
+  border: 2px solid #b71c1c;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  color: #333 !important;
+}
+
+.pedidos h2 {
+  color: #b71c1c;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.card-dark {
+  background: #fff;
+  border: 2px solid #e2e2e2;
+  border-radius: 12px;
+  transition: .3s;
+}
+
+.card-dark:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* BOTÕES */
+.btn-warning {
+  background: #ffb74d;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-success {
+  background: #2e7d32;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-danger {
+  background: #c62828;
+  border: none;
+  font-weight: bold;
+}
+
+/* LISTAGEM */
+.table-listagem {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.table-listagem thead {
+  background: #ffe08c !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.table-listagem td,
+.table-listagem th {
+  vertical-align: middle;
+  padding: 12px;
+}
+
+.table-listagem tbody tr:nth-child(even) { background: #fafafa; }
+
+.table-listagem tbody tr:hover { background: #f1f1f1; }
+
+.table-listagem .btn-warning,
+.table-listagem .btn-danger {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.table-listagem .btn-warning:hover,
+.table-listagem .btn-danger:hover {
+  transform: scale(1.07);
+}
+
+/* ============================
+   CARDS DOS PEDIDOS
+============================ */
+
+/* ÁREA DE PEDIDOS */
+.area-pedidos {
+    width: 100%;
+    margin-top: 120px;
+    padding: 10px;
+    background: #3f1613; /* marrom madeira */
+    background-image: url('../img/textura-madeira.jpg'); /* opcional */
+    background-size: cover;
+    background-position: center;
+}
+
+/* TÍTULO */
+.area-pedidos h2 {
+    color: #ffe8b5;
+    font-family: "Georgia", serif;
+    font-size: 2rem;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+}
+
+/* CARD ESTILO PIZZARIA */
+.card.card-dark {
+    background: #2c1a18; 
+    border-radius: 20px;
+    padding: 25px;
+    width: 270px;
+    min-height: 300px;
+    color: #faf2e3;
+    border: 2px solid #4c140e; /* vermelho queimado */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* HOVER */
+
+
+/* TÍTULO DO CLIENTE */
+.card.card-dark .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f9f9f9;
+    font-family: "Georgia", serif;
+    margin-bottom: 10px;
+}
+
+/* TEXTOS */
+.card.card-dark .card-text {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #fff1d6;
+}
+
+/* BOTÕES BASE */
+.card.card-dark button {
+    width: 100%;
+    padding: 11px;
+    font-size: 1.05rem;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.2s;
+    border: none;
+}
+
+/* BOTÃO VER */
+.card.card-dark .btn-warning {
+    background: #e6a637; /* amarelo pizza */
+    color: #49221f;
+}
+
+
+
+/* BOTÃO EXCLUIR */
+.card.card-dark .btn-danger {
+    background: #c0392b; /* vermelho molho */
+}
+
+
+
+/* ============================
+   MODAL DE DETALHES
+============================ */
+
+#modalPedido .modal-content {
+    background-color: #181818 !important;
+    color: #fff !important;
+    border-radius: 12px !important;
+    border: 1px solid #333 !important;
+}
+
+#modalPedido .modal-header,
+#modalPedido .modal-footer {
+    border-color: #333 !important;
+}
+
+#modalPedido .modal-title {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+
+/* ============================
+   MODAL DE EXCLUSÃO
+============================ */
+
+#modalConfirmarExclusao .modal-content {
+    background-color: #1c1c1c !important;
+    color: #fff !important;
+    border-radius: 12px !important;
+}
+
+#modalConfirmarExclusao .modal-header {
+    border-bottom: none !important;
+}
+
+#modalConfirmarExclusao .modal-body {
+    font-size: 18px !important;
+}
+
+#modalConfirmarExclusao .btn-danger,
+#modalConfirmarExclusao .btn-secondary {
+    font-weight: bold !important;
+}
+
+
+/* ============================
+   TRANSIÇÃO DO MODAL (SUAVE)
+============================ */
+
+.modal.fade .modal-dialog {
+    transform: translateY(-20px) !important;
+    transition: .3s !important;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: translateY(0) !important;
+}
+
+.status-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.status-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.status-item span {
+  font-size: 15px;
+}
